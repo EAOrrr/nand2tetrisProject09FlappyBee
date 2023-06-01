@@ -1,0 +1,124 @@
+class List{
+    field Pole head, tail;              // record the head and the tail of the list 
+
+    /** construct a new empty list of poles */
+    constructor List new(){
+        let head = null;
+        let tail = null;
+        return this;
+    }
+
+    /** dispose the list and its poles */
+    method void dispose(){
+        // dispose the nodes in the List
+        var Pole curr;
+        var Pole tmp;
+        let curr = head;
+        while(~(curr = null)){
+            let tmp = curr;
+            let curr = curr.getNext();
+            do tmp.dispose();
+        }
+        // dispose this list
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    /** rewire the list*/
+    /** generate a newPole */
+    method Pole generateNewPole(){
+        var Pole newPole;
+        var int randomNumber;
+        let randomNumber = Random.dist(10, 200);
+        let newPole = Pole.new(511, randomNumber);
+        return newPole;
+    }
+    /** add a new pole at the end of the list */
+    method void pushBack(Pole newPole){
+        // cond 1: lst has no poles now
+        /*
+        *BEFORE
+            null 
+            ^   ^
+            |   |
+            head  tail
+            pole1 -> null
+            ^         ^
+            |         |
+            head     tail
+        */
+        if(head = null){
+        
+            let head = newPole;
+            let tail = newPole;
+        }
+        // cond 2: lst has many poles
+        /* 
+        *BEFORE
+            pole1 -> pole2 -> pole3 -> null
+            ^                  ^
+            |                  |
+            head              tail
+        *AFTER:
+            pole1 -> pole2 -> pole3 -> pole4 -> null
+            ^                            ^
+            |                            |
+            head                        tail
+        */
+        else{
+            do tail.setNext(newPole);
+            let tail = tail.getNext();
+        }
+        return;
+    }
+
+    /** check if the head pole is an invaild pole, if so, remove it*/
+    method void removeInvalid(){
+        var Pole tmp;
+        var int right;
+        if(head = null){
+            return;
+        }
+        let right = head.getRight();
+        if (right < 0) {
+            let tmp = head;
+            let head = head.getNext();
+            do tmp.dispose();
+        }
+        return;
+    } 
+
+    /** traversal
+    /** move all poles in the lst */
+    method void moveAllPole(){
+        var Pole curr;
+        let curr = head;
+        while(~(curr=null)){
+           do curr.move();
+           let curr = curr.getNext(); 
+        }
+        return;
+    }
+
+    /** draw all poles in the lst*/
+    method void drawAllPole(){
+        var Pole curr;
+        let curr = head;
+        while(~(curr=null)){
+            do curr.show();
+            let curr = curr.getNext();
+        }
+        return;
+    }
+
+    /** hide all poles in the lst */
+    method void hideAllPole(){
+        var Pole curr;
+        let curr = head;
+        while(~(curr=null)){
+            do curr.hide();
+            let curr = curr.getNext();
+        }
+        return;
+    }
+}

@@ -1,0 +1,124 @@
+function Pole.new 0
+push constant 5
+call Memory.alloc 1
+pop pointer 0
+push constant 40
+pop this 2
+push constant 48
+pop this 3
+push argument 0
+pop this 0
+push argument 1
+pop this 1
+push constant 0
+pop this 4
+push pointer 0
+return
+function Pole.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function Pole.getNext 0
+push argument 0
+pop pointer 0
+push this 4
+return
+function Pole.getLeft 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function Pole.getRight 0
+push argument 0
+pop pointer 0
+push this 0
+push this 2
+add
+return
+function Pole.getUp 0
+push argument 0
+pop pointer 0
+push this 1
+return
+function Pole.getDown 0
+push argument 0
+pop pointer 0
+push this 1
+push this 3
+add
+return
+function Pole.draw 2
+push argument 0
+pop pointer 0
+push this 0
+push constant 0
+call Math.max 2
+pop local 0
+push constant 511
+push this 0
+push this 2
+add
+call Math.min 2
+pop local 1
+push local 0
+push constant 0
+push local 1
+push constant 255
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push local 0
+push this 1
+push local 1
+push this 1
+push this 3
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function Pole.show 0
+push argument 0
+pop pointer 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push pointer 0
+call Pole.draw 1
+pop temp 0
+push constant 0
+return
+function Pole.hide 0
+push argument 0
+pop pointer 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push pointer 0
+call Pole.draw 1
+pop temp 0
+push constant 0
+return
+function Pole.setNext 0
+push argument 0
+pop pointer 0
+push argument 1
+pop this 4
+push constant 0
+return
+function Pole.move 0
+push argument 0
+pop pointer 0
+push this 0
+push constant 16
+sub
+pop this 0
+push constant 0
+return

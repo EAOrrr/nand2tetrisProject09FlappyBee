@@ -1,0 +1,77 @@
+class Pole{
+    /** field variable */
+    field int x, y, lengthX, lengthY;   // for location
+    field Pole next;                    // the next pole
+    
+    /** construct a new pole with given location(x, y) and seed */
+    constructor Pole new(int dx, int dy){
+        let lengthX = 40;
+        let lengthY = 48;
+        let x = dx;
+        let y = dy;
+        let next = null;
+        return this;
+    }
+
+    /** dispose this pole */
+    method void dispose(){
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    /** accessors */
+    method Pole getNext() {return next;}
+    method int getLeft(){return x;}
+    method int getRight(){return x+lengthX;}
+    method int getUp(){return y;}
+    method int getDown(){return y+lengthY;}
+
+    /** method for drawing poles */
+    /** draw the pole on screen */
+    method void draw(){
+        var int left, right;
+        // in cast x < 0 or x+lengthx-1>511 (out of screen)
+        // if(x < 0) {let left = 0;}
+        // else {let left = x;}
+        
+        // if (x+lengthX > 511) {let right  = 511;}
+        // else {let right = x+lengthX;}
+
+        let left = Math.max(x, 0);
+        let right = Math.min(511, x+lengthX);
+        do Screen.drawRectangle(left, 0, right, 255);
+        do Screen.setColor(false);
+        do Screen.drawRectangle(left, y, right, y+lengthY);
+
+        return;
+    }
+
+    /** show the pole on screen */
+    method void show(){
+        do Screen.setColor(true);
+        do draw();
+        return;
+    }
+
+    /** hide the pole on screen */
+    method void hide(){
+        do Screen.setColor(false);
+        do draw();
+        return;
+    }
+
+    /** change the field variable of poles */
+
+    /** set the next of current pole to a new pole */
+    method void setNext(Pole newPole){
+        let next = newPole;
+        return;
+    }
+
+    /** move the pole by 16 pixels */
+    method void move(){
+        let x = x - 16;
+        return;
+    }
+
+}

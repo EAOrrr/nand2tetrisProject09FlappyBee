@@ -1,0 +1,50 @@
+class Bee{
+    field int x, y, lengthX, lengthY;   // for location
+    field int step;                     // for flying distance
+    
+    /** construct the bee with given location and step */
+    constructor Bee new(int dx, int dy, int dstep){
+        let x = dx;
+        let y = dy;
+        let step = dstep;
+        let lengthX = 16;
+        let lengthY = 16;
+        return this;
+    }
+
+    /** dispose this bee */
+    method void dispose(){
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    /** draw the bee on Screen */
+    method void draw(int location) {
+        var int memAddress;
+		let memAddress = 16384 + location;
+		do Memory.poke(memAddress + 0, 8320);
+		do Memory.poke(memAddress + 32, 4352);
+		do Memory.poke(memAddress + 64, 16140);
+		do Memory.poke(memAddress + 96, 8338);
+		do Memory.poke(memAddress + 128, 23394);
+		do Memory.poke(memAddress + 160, 21058);
+		do Memory.poke(memAddress + 192, -32702);
+		do Memory.poke(memAddress + 224, 25541);
+		do Memory.poke(memAddress + 256, -16695);
+		do Memory.poke(memAddress + 288, -78);
+		do Memory.poke(memAddress + 320, 32380);
+		do Memory.poke(memAddress + 352, 14816);
+		do Memory.poke(memAddress + 384, 6088);
+		do Memory.poke(memAddress + 416, 3992);
+		do Memory.poke(memAddress + 448, 824);
+		do Memory.poke(memAddress + 480, 4);
+		return;
+	}
+
+    /** show the bee on screen */
+    method void show(){
+        do draw((32*y) + (x/16));
+        return;
+    }
+
+}

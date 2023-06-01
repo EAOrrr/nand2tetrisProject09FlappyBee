@@ -1,0 +1,122 @@
+class Test{
+    /** test the draw and show function of pole */
+    function void test1(){
+        var Pole pole1, pole2, pole3, pole4;
+        let pole1 = Pole.new(410, 64);
+        let pole2 = Pole.new(-14, 34);
+        let pole3 = Pole.new(500, 144);
+        let pole4 = pole3;
+        do pole1.show();
+        do pole2.show();
+        do pole3.show();
+        do Sys.wait(1000);
+        do pole1.hide();
+        do pole3.hide();
+        do pole1.move();
+        do pole4.move();
+        do pole1.show();
+        do pole3.show();
+        do pole2.dispose();
+        do pole3.dispose();
+        do pole1.dispose();
+        return;
+    }
+
+    /** test the draw the show function of the bee */
+    function void test2(){
+        var Bee bee;
+        let bee = Bee.new(127, 127, 16);
+        do bee.show();
+        do bee.dispose();
+        return;
+    }
+
+    /** test move poles combined with sys.wait */
+    function void test3(){
+        var Pole pole1, pole2, pole3, pole4;
+        var int cnt;
+        let cnt = 0;
+        let pole1 = Pole.new(410, 64);
+        let pole2 = Pole.new(214, 34);
+        let pole3 = Pole.new(500, 144);
+        let pole4 = Pole.new(362, 187);
+        while(cnt < 6){
+            do pole1.show();
+            do pole2.show();
+            do pole3.show();
+            do pole4.show();
+            do Sys.wait(500);
+            do pole1.hide();
+            do pole2.hide();
+            do pole3.hide();
+            do pole4.hide();
+            do pole1.move();
+            do pole2.move();
+            do pole3.move();
+            do pole4.move();
+            let cnt = cnt+1;
+        }
+        do pole1.show();
+        do pole2.show();
+        do pole3.show();
+        do pole4.show();
+        do pole1.dispose();
+        do pole2.dispose();
+        do pole3.dispose();
+        do pole4.dispose();
+        return;
+    }
+
+    /** similar to test 3 but use list*/
+    function void test4(){
+        var List newList;
+        var Pole pole1, pole2, pole3, pole4;
+        var int cnt;
+        let cnt = 0;
+        let pole1 = Pole.new(410, 64);
+        let pole2 = Pole.new(215, 34);
+        let pole3 = Pole.new(500, 144);
+        let pole4 = Pole.new(362, 187);
+        let newList = List.new();
+        do newList.pushBack(pole2);
+        do newList.drawAllPole();
+        do newList.pushBack(pole4);
+
+        do newList.drawAllPole();
+        do newList.pushBack(pole1);
+        do newList.drawAllPole();
+        do newList.pushBack(pole3);
+        do newList.drawAllPole();
+        while(true){
+            do newList.removeInvalid();
+            
+            do newList.drawAllPole();
+            do Sys.wait(200);
+            // do newList.traversal();
+            do Sys.wait(200);
+            do newList.hideAllPole();
+            do newList.moveAllPole();
+        }
+        
+        do newList.drawAllPole();
+        do newList.dispose();
+        return;
+    }
+    
+    /** test if the list.random*/
+    function void test5(){
+        var int n;
+        var int seed;
+        do Random.setInitSeed(5093);
+        while(true){
+            let n = Random.dist(11, 200);
+            let seed = Random.getSeed();
+            do Output.moveCursor(11, 30);
+            do Output.printInt(n); 
+            do Output.moveCursor(9, 30);
+            do Output.printInt(seed);
+            do Sys.wait(100);
+        } 
+        return;
+    }
+}

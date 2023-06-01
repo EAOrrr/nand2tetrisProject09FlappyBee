@@ -1,0 +1,55 @@
+function Random.setInitSeed 0
+push argument 0
+pop static 0
+push constant 0
+pop static 1
+push constant 0
+return
+function Random.LCG 0
+push constant 17
+push static 0
+call Math.multiply 2
+push constant 7919
+add
+pop static 0
+push static 0
+return
+function Random.dist 1
+call Random.LCG 0
+pop local 0
+push constant 22
+push constant 30
+call Output.moveCursor 2
+pop temp 0
+push static 1
+call Output.printInt 1
+pop temp 0
+push static 1
+push constant 1
+add
+pop static 1
+push local 0
+push argument 1
+push argument 0
+sub
+call Random.mod 2
+push argument 0
+add
+return
+function Random.mod 1
+push argument 0
+push argument 0
+neg
+call Math.max 2
+pop local 0
+push local 0
+push local 0
+push argument 1
+call Math.divide 2
+push argument 1
+call Math.multiply 2
+sub
+return
+function Random.getSeed 0
+push static 0
+return

@@ -1,0 +1,39 @@
+class Random{
+    static int seed;
+    static int cnt;
+
+    /** set the initial seed */
+    function void setInitSeed(int s){
+        let seed = s;
+        let cnt = 0;
+        return;
+    }
+
+    /** using LCG to generate a random integer*/
+    /* Xn+1 = (multiplier * Xn + increment) % modulus */
+    function int LCG(){
+        let seed =  (17 * seed) + 7919;
+        return seed;
+
+    }
+    /** get a random number in a given distance */
+    function int dist(int minInt, int maxInt){
+        var int randomNumber;
+        let randomNumber = Random.LCG();
+        do Output.moveCursor(22, 30);
+         do Output.printInt(cnt);
+         let cnt = cnt+1;
+        return Random.mod(randomNumber, (maxInt - minInt)) + minInt;
+    }
+
+    /** return n % m*/
+    function int mod(int n, int m){
+        var int abs; 
+        let abs = Math.max(n, -n);
+        return abs - (abs/m *m);
+    }
+    /* for debug*/
+    function int getSeed(){
+        return seed;
+    }
+}

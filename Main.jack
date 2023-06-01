@@ -1,0 +1,12 @@
+class Main{
+    function void main(){
+        var Playground pg;
+        do Playground.newInstance();
+        let pg = Playground.getInstance();
+        do pg.run();
+        do gp.dispose();
+        return;
+
+    }
+
+}
