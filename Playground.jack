@@ -45,9 +45,9 @@ class Playground{
                 let newPole = listOfPoles.generateNewPole();
                 do listOfPoles.pushBack(newPole);
             }
-            do listOfPoles.removeInvalid();
             do listOfPoles.hideAllPole();
             do listOfPoles.moveAllPole();
+            do listOfPoles.removeInvalid();
             do listOfPoles.drawAllPole();
             let timer = timer+1;
             do Output.moveCursor(22,7);
