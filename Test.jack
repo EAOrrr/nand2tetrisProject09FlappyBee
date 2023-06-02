@@ -119,4 +119,59 @@ class Test{
         } 
         return;
     }
+
+    /** test if the bee can fly up and down */
+    function void test7(){
+        var Bee bee;
+        var int cnt;
+        let cnt = 0;
+        let bee = Bee.new(127, 127, 16);
+        while(cnt < 6){
+            do bee.hide();
+            do Sys.wait(100);
+            do bee.move();
+            do Sys.wait(500);
+            let cnt = cnt + 1;
+        }
+        do bee.setState(2);
+        while(cnt < 12){
+            do bee.move();
+            do Sys.wait(500);
+            let cnt = cnt + 1;
+        }
+        return;
+    }
+
+    /* test the bee fly combines with the user input */
+    function void test8(){
+        var Bee bee;
+        var char key;
+        let bee = Bee.new(127, 127, 4);
+        do bee.show();
+        do Sys.wait(100);
+        while(true){
+            do Output.moveCursor(0, 22);    do Output.printInt(0);
+            let key = Keyboard.keyPressed();
+            do Output.moveCursor(0, 22);    do Output.printInt(2);
+            if(key = 32){
+                do bee.setState(1);
+            }
+            else{
+                do bee.setState(0);
+            }
+            do bee.move();
+            do Sys.wait(50);
+        }
+        return;
+    }
+
+    /** combine test of bees and test of poles(without crash dectection) */
+    function void test9(){
+        var Bee bee;
+        var char key;
+        var List listOfPoles; 
+        let bee.show();
+        
+        
+    }
 }
