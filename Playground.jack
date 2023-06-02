@@ -52,13 +52,13 @@ class Playground{
             let timer = timer+1;
             do Output.moveCursor(22,7);
             do Output.printInt(timer);
-            if(timer > 8){
+            if(timer > 16){
                 let randomNumber = Random.dist(0, 2);
                 if(randomNumber = 1){
                     let timer = 0;
                 }
             }
-            do Sys.wait(100);
+            do Sys.wait(50);
         }
         return;
     }
