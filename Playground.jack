@@ -38,28 +38,6 @@ class Playground{
     }
 
     method void run(){
-        var int randomNumber;
-        var Pole newPole;
-        while(true){
-            if(timer = 0){
-                let newPole = listOfPoles.generateNewPole();
-                do listOfPoles.pushBack(newPole);
-            }
-            do listOfPoles.hideAllPole();
-            do listOfPoles.moveAllPole();
-            do listOfPoles.removeInvalid();
-            do listOfPoles.drawAllPole();
-            let timer = timer+1;
-            do Output.moveCursor(22,7);
-            do Output.printInt(timer);
-            if(timer > 8){
-                let randomNumber = Random.dist(0, 2);
-                if(randomNumber = 1){
-                    let timer = 0;
-                }
-            }
-            do Sys.wait(100);
-        }
         return;
     }
 }
