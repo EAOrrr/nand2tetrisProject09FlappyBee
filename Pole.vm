@@ -67,18 +67,19 @@ pop local 1
 push local 0
 push constant 0
 push local 1
-push constant 255
+push this 1
+push constant 1
+sub
 call Screen.drawRectangle 4
-pop temp 0
-push constant 0
-call Screen.setColor 1
 pop temp 0
 push local 0
 push this 1
-push local 1
-push this 1
 push this 3
 add
+push constant 1
+add
+push local 1
+push constant 255
 call Screen.drawRectangle 4
 pop temp 0
 push constant 0
@@ -117,7 +118,7 @@ function Pole.move 0
 push argument 0
 pop pointer 0
 push this 0
-push constant 16
+push constant 8
 sub
 pop this 0
 push constant 0

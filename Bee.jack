@@ -1,6 +1,7 @@
 class Bee{
     field int x, y, lengthX, lengthY;   // for location
     field int step;                     // for flying distance
+    field int state;                    // state 1: flying up; state 2: flying down
     
     /** construct the bee with given location and step */
     constructor Bee new(int dx, int dy, int dstep){
@@ -9,6 +10,7 @@ class Bee{
         let step = dstep;
         let lengthX = 16;
         let lengthY = 16;
+        let state = 1;
         return this;
     }
 
@@ -47,4 +49,32 @@ class Bee{
         return;
     }
 
+    /** hide the bee from screen */
+    method void hide(){
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x-lengthX+1, y, x, y+lengthY);
+        return;
+    }
+
+    /** move the bee according to its state*/
+    method void move(){
+        if(state = 1){
+            do hide();
+            let y = y - step;
+            do show();
+        }
+        else{
+            // assume state=2;
+            do hide();
+            let y = y + step;
+            do show();
+        }
+        return;
+    }
+
+    /** set the state of the bee*/
+    method void setState(int newState){
+        let state = newState;
+        return;
+    }
 }
