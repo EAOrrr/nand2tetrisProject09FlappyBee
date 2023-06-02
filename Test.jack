@@ -170,8 +170,42 @@ class Test{
         var Bee bee;
         var char key;
         var List listOfPoles; 
-        let bee.show();
-        
+        var int GeneratePoletimer;
+        var int gameTimer;
+        var int randomNumber;
+        var Pole newPole;
+        let bee = Bee.new(127, 127, 4);
+        let listOfPoles = List.new();
+        do bee.show();
+        while(true){
+            let key = Keyboard.keyPressed();
+            if(key = 32){
+                do bee.setState(1);
+            }
+            else{
+                do bee.setState(2);
+            }
+            if(GeneratePoletimer = 0){
+                let newPole = listOfPoles.generateNewPole();
+                do listOfPoles.pushBack(newPole);
+            }
+            do bee.move();
+            do listOfPoles.hideAllPole();
+            do listOfPoles.moveAllPole();
+            do listOfPoles.removeInvalid();
+            do listOfPoles.drawAllPole();
+            let GeneratePoletimer = GeneratePoletimer+1;
+            do Output.moveCursor(22,7);
+            do Output.printInt(gameTimer);
+            if(GeneratePoletimer > 16){
+                let randomNumber = Random.dist(0, 2);
+                if(randomNumber = 1){
+                    let GeneratePoletimer = 0;
+                }
+            }
+            do Sys.wait(50);
+        }
+        return;
         
     }
 }

@@ -39,9 +39,8 @@ class Pole{
 
         let left = Math.max(x, 0);
         let right = Math.min(511, x+lengthX);
-        do Screen.drawRectangle(left, 0, right, 255);
-        do Screen.setColor(false);
-        do Screen.drawRectangle(left, y, right, y+lengthY);
+        do Screen.drawRectangle(left, 0, right, y-1);
+        do Screen.drawRectangle(left, y+lengthY+1, right, 255);
 
         return;
     }
@@ -70,7 +69,7 @@ class Pole{
 
     /** move the pole by 16 pixels */
     method void move(){
-        let x = x - 16;
+        let x = x - 8;
         return;
     }
 

@@ -1,12 +1,5 @@
-function Main.main 1
-call Playground.newInstance 0
-pop temp 0
-call Playground.getInstance 0
-pop local 0
-push local 0
-call Playground.run 1
-pop temp 0
-call gp.dispose 0
+function Main.main 0
+call Test.test9 0
 pop temp 0
 push constant 0
 return
