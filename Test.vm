@@ -516,3 +516,22 @@ goto WHILE_EXP0
 label WHILE_END0
 push constant 0
 return
+function Test.test10 0
+call Menu.exitMenu 0
+pop temp 0
+push constant 0
+return
+function Test.test11 0
+push constant 3
+call Menu.restartMenu 1
+pop temp 0
+push constant 1000
+call Sys.wait 1
+pop temp 0
+call Screen.clearScreen 0
+pop temp 0
+push constant 4
+call Menu.restartMenu 1
+pop temp 0
+push constant 0
+return

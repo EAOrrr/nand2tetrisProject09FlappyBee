@@ -1,13 +1,33 @@
-function Main.main 1
+function Main.main 4
+push constant 0
+pop local 1
+call Menu.startMenu 0
+pop temp 0
+label WHILE_EXP0
+push local 1
+not
+not
+if-goto WHILE_END0
+call Screen.clearScreen 0
+pop temp 0
 call Playground.newInstance 0
 pop temp 0
 call Playground.getInstance 0
 pop local 0
 push local 0
 call Playground.run 1
-pop temp 0
+pop local 2
 push local 0
 call Playground.dispose 1
+pop temp 0
+push local 2
+call Menu.restartMenu 1
+pop local 1
+goto WHILE_EXP0
+label WHILE_END0
+call Screen.clearScreen 0
+pop temp 0
+call Menu.exitMenu 0
 pop temp 0
 push constant 0
 return

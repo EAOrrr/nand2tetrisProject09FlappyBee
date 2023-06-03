@@ -1,5 +1,5 @@
 function Pole.new 0
-push constant 5
+push constant 6
 call Memory.alloc 1
 pop pointer 0
 push constant 40
@@ -12,6 +12,8 @@ push argument 1
 pop this 1
 push constant 0
 pop this 4
+push constant 0
+pop this 5
 push pointer 0
 return
 function Pole.dispose 0
@@ -50,6 +52,11 @@ pop pointer 0
 push this 1
 push this 3
 add
+return
+function Pole.getScoreState 0
+push argument 0
+pop pointer 0
+push this 5
 return
 function Pole.draw 2
 push argument 0
@@ -112,6 +119,14 @@ push argument 0
 pop pointer 0
 push argument 1
 pop this 4
+push constant 0
+return
+function Pole.setScore 0
+push argument 0
+pop pointer 0
+push constant 0
+not
+pop this 5
 push constant 0
 return
 function Pole.move 0

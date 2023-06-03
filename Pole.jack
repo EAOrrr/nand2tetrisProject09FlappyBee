@@ -2,6 +2,7 @@ class Pole{
     /** field variable */
     field int x, y, lengthX, lengthY;   // for location
     field Pole next;                    // the next pole
+    field boolean scored;
     
     /** construct a new pole with given location(x, y) and seed */
     constructor Pole new(int dx, int dy){
@@ -10,6 +11,7 @@ class Pole{
         let x = dx;
         let y = dy;
         let next = null;
+        let scored = false;
         return this;
     }
 
@@ -25,7 +27,7 @@ class Pole{
     method int getRight(){return x+lengthX;}
     method int getUp(){return y;}
     method int getDown(){return y+lengthY;}
-
+    method boolean getScoreState(){return scored;}
     /** method for drawing poles */
     /** draw the pole on screen */
     method void draw(){
@@ -64,6 +66,12 @@ class Pole{
     /** set the next of current pole to a new pole */
     method void setNext(Pole newPole){
         let next = newPole;
+        return;
+    }
+
+    /** set the pole scored state */
+    method void setScore(){
+        let scored = true;
         return;
     }
 

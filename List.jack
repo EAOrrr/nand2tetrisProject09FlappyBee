@@ -29,7 +29,7 @@ class List{
     method Pole generateRandomPole(){
         var Pole newPole;
         var int randomNumber;
-        let randomNumber = Random.dist(10, 200);
+        let randomNumber = Random.dist(10, 180);
         let newPole = Pole.new(511, randomNumber);
         return newPole;
     }
@@ -129,12 +129,49 @@ class List{
         return;
     }
 
-    // /** move poles in the lst, including hiding, moving, drawing, and removing invalid one */
-    // method void move(){
-    //     do hideAllPole();
-    //     do moveAllPole();
-    //     do removeInvalid();
-    //     do drawAllPole();
-    //     return;
-    // }
+    /** check if there are score update */
+    method int checkScore(int left){
+        var Pole curr;
+        var boolean currPoleScored;
+        var int currLeft;
+        let currPoleScored = false;
+        let curr = head;
+        while(~(curr=null)){
+            let currPoleScored = curr.getScoreState();
+            if(~currPoleScored){ // the pole has not been scored, also the first pole hasn't been scored
+                let currLeft = curr.getLeft();
+                if(currLeft<left){
+                    do curr.setScore();
+                    return 1;
+                }
+                return 0;
+            }
+            let curr = curr.getNext();
+        }
+        return 0;
+    }
+
+    /** check if the bee has crashed onto the pole */
+    method boolean checkCrash(Bee bee){
+        var Pole curr;
+        var int pLeft, pRight, pUp, pDown;
+        var int bLeft, bRight, bUp, bDown;
+        let bLeft = bee.getLeft();  let bRight = bee.getRight();
+        let bUp = bee.getUp();      let bDown = bee.getDown();
+        let curr = head;
+        while(~(curr=null)){
+            let pLeft = curr.getLeft(); let pRight = curr.getRight(); 
+            let pUp = curr.getUp();     let pDown = curr.getDown();
+            if(pRight > bLeft){
+                if(pLeft > bRight){
+                    return false;
+                }
+                if(pUp > bUp | pDown < bDown){
+                    return true;
+                }
+            }
+            let curr = curr.getNext();
+        }
+        return false;
+    }
 }

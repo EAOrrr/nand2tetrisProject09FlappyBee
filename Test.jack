@@ -220,4 +220,20 @@ class Test{
         }
         return;
     }
+
+    function void test10(){
+        // do Menu.startMenu();
+        // do Sys.wait(1000);
+        // do Screen.clearScreen();
+        do Menu.exitMenu();
+        return;
+    }
+
+    function void test11(){
+        do Menu.restartMenu(3);
+        do Sys.wait(1000);
+        do Screen.clearScreen();
+        do Menu.restartMenu(4);
+        return;
+    }
 }

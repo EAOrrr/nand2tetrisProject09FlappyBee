@@ -39,7 +39,7 @@ function List.generateRandomPole 2
 push argument 0
 pop pointer 0
 push constant 10
-push constant 200
+push constant 180
 call Random.dist 2
 pop local 1
 push constant 511
@@ -176,6 +176,126 @@ if-goto WHILE_END0
 push local 0
 call Pole.hide 1
 pop temp 0
+push local 0
+call Pole.getNext 1
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function List.checkScore 3
+push argument 0
+pop pointer 0
+push constant 0
+pop local 1
+push this 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push constant 0
+eq
+not
+not
+if-goto WHILE_END0
+push local 0
+call Pole.getScoreState 1
+pop local 1
+push local 1
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 0
+call Pole.getLeft 1
+pop local 2
+push local 2
+push argument 1
+lt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 0
+call Pole.setScore 1
+pop temp 0
+push constant 1
+return
+label IF_FALSE1
+push constant 0
+return
+label IF_FALSE0
+push local 0
+call Pole.getNext 1
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function List.checkCrash 9
+push argument 0
+pop pointer 0
+push argument 1
+call Bee.getLeft 1
+pop local 5
+push argument 1
+call Bee.getRight 1
+pop local 6
+push argument 1
+call Bee.getUp 1
+pop local 7
+push argument 1
+call Bee.getDown 1
+pop local 8
+push this 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push constant 0
+eq
+not
+not
+if-goto WHILE_END0
+push local 0
+call Pole.getLeft 1
+pop local 1
+push local 0
+call Pole.getRight 1
+pop local 2
+push local 0
+call Pole.getUp 1
+pop local 3
+push local 0
+call Pole.getDown 1
+pop local 4
+push local 2
+push local 5
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 1
+push local 6
+gt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+return
+label IF_FALSE1
+push local 3
+push local 7
+gt
+push local 4
+or
+push local 8
+lt
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 0
+not
+return
+label IF_FALSE2
+label IF_FALSE0
 push local 0
 call Pole.getNext 1
 pop local 0

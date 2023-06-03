@@ -24,6 +24,30 @@ call Memory.deAlloc 1
 pop temp 0
 push constant 0
 return
+function Bee.getLeft 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function Bee.getRight 0
+push argument 0
+pop pointer 0
+push this 0
+push this 2
+add
+return
+function Bee.getUp 0
+push argument 0
+pop pointer 0
+push this 1
+return
+function Bee.getDown 0
+push argument 0
+pop pointer 0
+push this 1
+push this 3
+add
+return
 function Bee.draw 1
 push argument 0
 pop pointer 0
@@ -143,6 +167,8 @@ push this 0
 push constant 16
 call Math.divide 2
 add
+push constant 1
+add
 call Bee.draw 2
 pop temp 0
 push constant 0
@@ -154,12 +180,10 @@ push constant 0
 call Screen.setColor 1
 pop temp 0
 push this 0
-push this 2
-sub
-push constant 1
-add
 push this 1
 push this 0
+push this 2
+add
 push this 1
 push this 3
 add

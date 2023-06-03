@@ -4,6 +4,7 @@ class Playground{
     field int generatePoleTimer; // decide whether to generate a new pole
     field int moveTimer;        // decide whether to move the poles 
     field int score;            // record the current score of the user
+    field int left;             // the left grid of bee
     field List listOfPoles;     //  a list of poles
     field Bee bee;              // a lovely bee
 
@@ -11,13 +12,12 @@ class Playground{
     constructor Playground new(){
         do Screen.clearScreen();
         let listOfPoles = List.new();
-        let bee = Bee.new(127, 127, 4);
+        let left = 126;
+        let bee = Bee.new(left, 127, 4);
         let generatePoleTimer = 0;
         let moveTimer = 0;
         let score = 0;
-        /* for debug */
-        do Output.moveCursor(22, 0);
-        do Output.printString("timer:0");
+        let bestScore = 0;
         return this;
     }
 
@@ -39,8 +39,12 @@ class Playground{
     function Playground getInstance(){
         return instance;
     }
-
-    method void run(){
+    /** access the bestScore */
+    function int getBestScore(){
+        return bestScore;
+    }
+    /** run a Flappy Game*/
+    method int run(){
         var boolean exit;
         let exit = false;
         while(~exit){
@@ -48,14 +52,12 @@ class Playground{
             do generatePoles();
             let exit = exit | (~bee.move()); // if bee has invalid move, then exit
             do movePoles();
+            let score = score + listOfPoles.checkScore(left);
+            let exit = exit | listOfPoles.checkCrash(bee); // if the bee has crash the poles, exit
             do printScore();
             do Sys.wait(25);
         }
-        if (exit) {
-            do Output.moveCursor(10,27);
-	        do Output.printString("Game Over");
-	    }
-        return;
+        return score;
     }
 
     /** to generate a new Pole */

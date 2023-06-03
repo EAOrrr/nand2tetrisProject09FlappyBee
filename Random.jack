@@ -9,6 +9,11 @@ class Random{
         return;
     }
 
+    function void setSeed(int s){
+        let seed = seed + s;
+        return;
+    }
+
     /** using LCG to generate a random integer*/
     /* Xn+1 = (multiplier * Xn + increment) % modulus */
     function int LCG(){
@@ -20,8 +25,6 @@ class Random{
     function int dist(int minInt, int maxInt){
         var int randomNumber;
         let randomNumber = Random.LCG();
-        do Output.moveCursor(22, 30);
-         do Output.printInt(cnt);
          let cnt = cnt+1;
         return Random.mod(randomNumber, (maxInt - minInt)) + minInt;
     }

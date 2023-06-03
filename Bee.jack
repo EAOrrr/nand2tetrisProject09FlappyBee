@@ -20,6 +20,12 @@ class Bee{
         return;
     }
 
+    /** accessors */
+    method int getLeft(){ return x; }
+    method int getRight(){ return x+lengthX; }
+    method int getUp() {return y;}
+    method int getDown() {return y+lengthY;}
+
     /** draw the bee on Screen */
     method void draw(int location) {
         var int memAddress;
@@ -45,14 +51,15 @@ class Bee{
 
     /** show the bee on screen */
     method void show(){
-        do draw((32*y) + (x/16));
+        do draw((32*y) + (x/16)+1);
         return;
     }
 
     /** hide the bee from screen */
     method void hide(){
         do Screen.setColor(false);
-        do Screen.drawRectangle(x-lengthX+1, y, x, y+lengthY);
+        // do Screen.drawRectangle(x-lengthX+1, y, x, y+lengthY);
+        do Screen.drawRectangle(x, y, x+lengthX, y+lengthY);
         return;
     }
 

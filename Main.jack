@@ -1,13 +1,25 @@
 class Main{
     function void main(){
         var Playground pg;
-        do Playground.newInstance();
-        let pg = Playground.getInstance();
-        do pg.run();
-        do pg.dispose();
-        // do Test.test9();
+        var boolean exit;
+        var int score;
+        var int bestScore;
+        let exit = false;
+        do Menu.startMenu();
+        while(~exit){
+            do Screen.clearScreen();
+            do Playground.newInstance();
+            let pg = Playground.getInstance();
+            let score = pg.run();
+            do pg.dispose();
+            let exit = Menu.restartMenu(score);
+        }
+        do Screen.clearScreen();
+        do Menu.exitMenu();
+        // do Test.test10();
         return;
 
     }
+
 
 }
