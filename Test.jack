@@ -199,8 +199,8 @@ class Test{
                 do bee.setState(2);
             }
             if(GeneratePoletimer = 0){
-                let newPole = listOfPoles.generateNewPole();
-                do listOfPoles.pushBack(newPole);
+                // let newPole = listOfPoles.generateNewPole();
+                // do listOfPoles.pushBack(newPole);
             }
             do bee.move();
             do listOfPoles.hideAllPole();

@@ -57,19 +57,23 @@ class Bee{
     }
 
     /** move the bee according to its state*/
-    method void move(){
+    method bool move(){
+        if(y < 0){
+            return false;
+        }
+        do hide();
         if(state = 1){
-            do hide();
             let y = y - step;
-            do show();
         }
         else{
             // assume state=2;
-            do hide();
             let y = y + step;
-            do show();
         }
-        return;
+        if(y+lengthY+1 > 255){
+            return false;
+        }
+        do show();
+        return true;
     }
 
     /** set the state of the bee*/

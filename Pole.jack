@@ -6,7 +6,7 @@ class Pole{
     /** construct a new pole with given location(x, y) and seed */
     constructor Pole new(int dx, int dy){
         let lengthX = 40;
-        let lengthY = 48;
+        let lengthY = 64;
         let x = dx;
         let y = dy;
         let next = null;

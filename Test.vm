@@ -462,13 +462,6 @@ eq
 if-goto IF_TRUE1
 goto IF_FALSE1
 label IF_TRUE1
-push local 2
-call List.generateNewPole 1
-pop local 6
-push local 2
-push local 6
-call List.pushBack 2
-pop temp 0
 label IF_FALSE1
 push local 0
 call Bee.move 1

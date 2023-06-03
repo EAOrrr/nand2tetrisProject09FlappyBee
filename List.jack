@@ -26,7 +26,7 @@ class List{
 
     /** rewire the list*/
     /** generate a newPole */
-    method Pole generateNewPole(){
+    method Pole generateRandomPole(){
         var Pole newPole;
         var int randomNumber;
         let randomNumber = Random.dist(10, 200);
@@ -72,6 +72,13 @@ class List{
         return;
     }
 
+    /** to generate a random pole */
+    method void pushBackRandomPole(){
+        var Pole newPole;
+        let newPole = generateRandomPole();
+        do pushBack(newPole);
+        return;
+    }
     /** check if the head pole is an invaild pole, if so, remove it*/
     method void removeInvalid(){
         var Pole tmp;
@@ -121,4 +128,13 @@ class List{
         }
         return;
     }
+
+    // /** move poles in the lst, including hiding, moving, drawing, and removing invalid one */
+    // method void move(){
+    //     do hideAllPole();
+    //     do moveAllPole();
+    //     do removeInvalid();
+    //     do drawAllPole();
+    //     return;
+    // }
 }

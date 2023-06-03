@@ -35,7 +35,7 @@ call Memory.deAlloc 1
 pop temp 0
 push constant 0
 return
-function List.generateNewPole 2
+function List.generateRandomPole 2
 push argument 0
 pop pointer 0
 push constant 10
@@ -71,6 +71,18 @@ push this 1
 call Pole.getNext 1
 pop this 1
 label IF_END0
+push constant 0
+return
+function List.pushBackRandomPole 1
+push argument 0
+pop pointer 0
+push pointer 0
+call List.generateRandomPole 1
+pop local 0
+push pointer 0
+push local 0
+call List.pushBack 2
+pop temp 0
 push constant 0
 return
 function List.removeInvalid 2
