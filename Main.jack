@@ -20,6 +20,10 @@ class Main{
         return;
 
     }
-
-
+    
+    function void printStringConst(String str){
+        do Output.printString(str);
+        do str.dispose();
+        return;
+    }
 }

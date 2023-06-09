@@ -10,11 +10,13 @@ class Menu{
             let key = Keyboard.keyPressed();
             if(Random.mod(timer, 90)=0){
                 do Output.moveCursor(11, 23);
-                do Output.printString("Click Space to Start");
+                // do Output.printString("Click Space to Start");
+                do Main.printStringConst("Click Space to Start");
             }
             if(Random.mod(timer+30, 90)=0){
                 do Output.moveCursor(11, 23);
-                do Output.printString("                    ");
+                // do Output.printString("                    ");
+                do Main.printStringConst("                    ");
             }
             let timer = timer + 1;
             do Sys.wait(5);
@@ -31,28 +33,34 @@ class Menu{
         // print the bestScore
         if(currScore = 0){
             do Output.moveCursor(10, 27);
-            do Output.printString("OH NO!");
+            do Main.printStringConst("OH NO!");
+            // do Output.printString("OH NO!");
         }
         else{
             if(currScore > bestScore){
                 let bestScore = currScore;
                 do Output.moveCursor(10, 14);
-                do Output.printString("Congratulations! You've break you record");
+                do Main.printStringConst("Congratulations! You've break you record");
+                // do Output.printString("Congratulations! You've break you record");
             }else{
                 do Output.moveCursor(10, 22);
-                do Output.printString("Your Best Score: ");
+                // do Output.printString("Your Best Score: ");
+                do Main.printStringConst("Your Best Score: ");
                 do Output.printInt(bestScore);
             }
         }
         // print the score of User
         do Output.moveCursor(11, 24);
-        do Output.printString("Your score: ");
+        // do Output.printString("Your score: ");
+        do Main.printStringConst("Your score: ");
         do Output.printInt(currScore);
         // more information
         do Output.moveCursor(12, 22);
-        do Output.printString("Press <Esc> to Quit");
+        // do Output.printString("Press <Esc> to Quit");
+        do Main.printStringConst("Press <Esc> to Quit");
         do Output.moveCursor(13, 14);
-        do Output.printString("Press any Key to Restart the Game  :)");
+        // do Output.printString("Press any Key to Restart the Game  :)");
+        do Main.printStringConst("Press any Key to Restart the Game  :)");
         do Sys.wait(500);
         while(key = 0){
             let key = Keyboard.keyPressed();
@@ -68,9 +76,11 @@ class Menu{
     /** exit Menu of the Game */
     function void exitMenu(){
         do Output.moveCursor(10, 20);
-        do Output.printString("Hope You Enjoy the Game");
+        // do Output.printString("Hope You Enjoy the Game");
+        do Main.printStringConst("Hope You Enjoy the Game");
         do Output.moveCursor(11, 24);
-        do Output.printString("See You Next Time!");
+        // do Output.printString("See You Next Time!");
+        do Main.printStringConst("See You Next Time!");
         return;
     }
 }
