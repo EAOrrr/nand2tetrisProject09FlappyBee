@@ -59,7 +59,7 @@ class Playground{
         }
         return score;
     }
-
+/*
     /** to generate a new Pole */
     method void generatePoles(){
         var Pole newPole;
@@ -94,7 +94,7 @@ class Playground{
     /** print the score of the current game on screen */
     method void printScore(){
         do Output.moveCursor(0, 53);
-        do Output.printString("Score:0");
+        do Main.printStringConst("score:0");
         do Output.moveCursor(0, 60);
         do Output.printInt(score);
         return;

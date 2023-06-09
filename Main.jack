@@ -16,7 +16,6 @@ class Main{
         }
         do Screen.clearScreen();
         do Menu.exitMenu();
-        // do Test.test10();
         return;
 
     }
